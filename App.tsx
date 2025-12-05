@@ -223,7 +223,7 @@ const App: React.FC = () => {
 
         {message && (
           <div className="absolute top-10 z-30 typewriter text-amber-500 bg-black/80 px-4 py-2 border border-amber-900/50">
-            >> {message}
+            {'>> '} {message}
           </div>
         )}
 
