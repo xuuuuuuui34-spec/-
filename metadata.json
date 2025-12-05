@@ -1,0 +1,5 @@
+{
+  "name": "Gothic Reversi",
+  "description": "一款视觉效果惊艳的哥特风格黑白棋游戏，支持本地双人对战、模拟在线多人对战以及由 Gemini 提供支持的 AI 对手。",
+  "requestFramePermissions": []
+}
