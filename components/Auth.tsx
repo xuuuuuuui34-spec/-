@@ -39,22 +39,22 @@ const Auth: React.FC<AuthProps> = ({ onLogin, onGuest }) => {
   return (
     <div className="relative w-full max-w-md mx-auto p-1">
       {/* Paper Stack Effect */}
-      <div className="absolute top-2 left-2 w-full h-full bg-[#d6d3d1] rounded shadow-lg rotate-1 z-0"></div>
+      <div className="absolute top-2 left-2 w-full h-full bg-[#d6d3d1] rounded shadow-lg rotate-1 z-0 hidden md:block"></div>
       <div className="absolute top-1 left-1 w-full h-full bg-[#e5e5e5] rounded shadow-md -rotate-1 z-0"></div>
       
       {/* Main File Content */}
-      <div className="relative z-10 paper-texture p-8 md:p-10 rounded shadow-2xl border border-[#a8a29e] text-[#292524] animate-[fadeIn_0.5s_ease-out]">
+      <div className="relative z-10 paper-texture p-6 md:p-10 rounded shadow-2xl border border-[#a8a29e] text-[#292524] animate-[fadeIn_0.5s_ease-out]">
         
         {/* Stamp */}
-        <div className="absolute top-4 right-4 w-20 h-20 border-4 border-red-900/30 rounded-full flex items-center justify-center -rotate-12 pointer-events-none select-none">
-          <span className="text-red-900/30 font-bold uppercase text-xs tracking-widest text-center">Identity<br/>Verified</span>
+        <div className="absolute top-2 right-2 md:top-4 md:right-4 w-16 h-16 md:w-20 md:h-20 border-4 border-red-900/30 rounded-full flex items-center justify-center -rotate-12 pointer-events-none select-none">
+          <span className="text-red-900/30 font-bold uppercase text-[10px] md:text-xs tracking-widest text-center">Identity<br/>Verified</span>
         </div>
 
-        <div className="mb-8 text-center">
-          <h2 className="text-3xl gothic-heading text-[#1c1917] mb-2 tracking-widest border-b-2 border-black/80 inline-block pb-1">
+        <div className="mb-6 md:mb-8 text-center mt-2">
+          <h2 className="text-2xl md:text-3xl gothic-heading text-[#1c1917] mb-2 tracking-widest border-b-2 border-black/80 inline-block pb-1">
             访客登记
           </h2>
-          <p className="typewriter text-xs mt-2 text-[#57534e]">CASE FILE NO. 2023-B</p>
+          <p className="typewriter text-[10px] md:text-xs mt-2 text-[#57534e]">CASE FILE NO. 2023-B</p>
         </div>
 
         {step === 'phone' ? (
@@ -66,7 +66,7 @@ const Auth: React.FC<AuthProps> = ({ onLogin, onGuest }) => {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="请输入手机号..."
-                className="w-full bg-transparent border-b-2 border-[#57534e] p-2 typewriter text-lg text-[#1c1917] placeholder-[#a8a29e] focus:outline-none focus:border-[#b91c1c] transition-colors"
+                className="w-full bg-transparent border-b-2 border-[#57534e] p-2 typewriter text-base md:text-lg text-[#1c1917] placeholder-[#a8a29e] focus:outline-none focus:border-[#b91c1c] transition-colors"
                 autoFocus
               />
             </div>
@@ -74,7 +74,7 @@ const Auth: React.FC<AuthProps> = ({ onLogin, onGuest }) => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#1c1917] text-[#e7e5e4] py-3 font-serif font-bold uppercase tracking-widest hover:bg-[#44403c] transition-colors shadow-lg clip-path-button"
+              className="w-full bg-[#1c1917] text-[#e7e5e4] py-3 font-serif font-bold uppercase tracking-widest active:bg-[#44403c] hover:bg-[#44403c] transition-colors shadow-lg clip-path-button text-sm md:text-base"
             >
               {loading ? "查询中..." : "获取密匙"}
             </button>
@@ -84,7 +84,9 @@ const Auth: React.FC<AuthProps> = ({ onLogin, onGuest }) => {
              <div className="space-y-1">
               <label className="typewriter text-xs font-bold uppercase">密匙 / Code</label>
               <input
-                type="text"
+                type="number"
+                pattern="[0-9]*"
+                inputMode="numeric"
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 placeholder="1234"
@@ -97,22 +99,22 @@ const Auth: React.FC<AuthProps> = ({ onLogin, onGuest }) => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#7f1d1d] text-[#e7e5e4] py-3 font-serif font-bold uppercase tracking-widest hover:bg-[#991b1b] transition-colors shadow-lg"
+              className="w-full bg-[#7f1d1d] text-[#e7e5e4] py-3 font-serif font-bold uppercase tracking-widest active:bg-[#991b1b] hover:bg-[#991b1b] transition-colors shadow-lg text-sm md:text-base"
             >
               {loading ? "解密中..." : "进入庄园"}
             </button>
             <button
               type="button"
               onClick={() => setStep('phone')}
-              className="w-full text-center text-xs underline typewriter text-[#78716c] hover:text-black"
+              className="w-full text-center text-xs underline typewriter text-[#78716c] hover:text-black py-2"
             >
               返回重置
             </button>
           </form>
         )}
 
-        <div className="mt-8 text-center">
-          <button onClick={onGuest} className="typewriter text-xs text-[#78716c] hover:text-[#b91c1c] transition-colors">
+        <div className="mt-6 md:mt-8 text-center">
+          <button onClick={onGuest} className="typewriter text-xs text-[#78716c] hover:text-[#b91c1c] transition-colors p-2">
             >> 以匿名身份潜入
           </button>
         </div>
